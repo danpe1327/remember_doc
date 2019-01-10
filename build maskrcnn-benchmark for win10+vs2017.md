@@ -4,7 +4,7 @@
 
 ## Prepared environment
 
-First you need to install pytorch>=1.0 and Microsoft Visual Studio 2017. You can install pytorch by pip or others. For the version of VS, I only test 2017.
+First you need to install pytorch==1.0 and Microsoft Visual Studio 2017. You can install pytorch by pip or others. For the version of VS, I only test 2017.
 
 ## Change the CUDA files
 
@@ -16,7 +16,7 @@ Build maskrcnn-benchmark on windows will rise errors:
 
 Reference form https://github.com/facebookresearch/maskrcnn-benchmark/pull/271, we should change two files below:
 
-ROIAlign_cuda.cu， ROIPool_cuda.cu 
+For ROIAlign_cuda.cu
 
 ```
 /*  added function */
@@ -29,6 +29,22 @@ int  ceil_div(int a, int b){
 dim3  grid(std::min(ceil_div((int)output_size, 512), 4096));
 // dim3  grid(std::min(THCCeilDiv(output_size, 512L), 4096L));
 ```
+
+For ROIPool_cuda.cu 
+
+```
+/*  added function */
+int  ceil_div_2(int a, int b){ 
+	return  (a + b - 1) / b; 
+}
+...
+
+/* replace the lines with THCCeilDiv, there are 2 palces in each file */
+dim3 grid(std::min(ceil_div_2((int)output_size, 512), 4096));
+//dim3 grid(std::min(THCCeilDiv(output_size, 512L), 4096L));
+```
+
+
 
 ## Change setup.py
 
