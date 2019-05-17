@@ -30,18 +30,18 @@ sudo apt-get install -y libopenblas-dev
 - ### 1.5 Download tools, include simpledet, pycocotools and mxnext
 
 ```
-git clone <https://github.com/TuSimple/simpledet.git>
+git clone https://github.com/TuSimple/simpledet.git
 cd /path/to/simpledet
 make
 
 # Install a patched cocotools for python3
-git clone <https://github.com/RogerChern/cocoapi>
+git clone https://github.com/RogerChern/cocoapi
 cd cocoapi/PythonAPI
 python3 setup.py install
 
 # setup mxnext, a wrapper of mxnet symbolic API
 cd /path/to/simpledet
-git clone <https://github.com/RogerChern/mxnext>
+git clone https://github.com/RogerChern/mxnext
 ```
 
 - ### 1.6 Install mxnet
