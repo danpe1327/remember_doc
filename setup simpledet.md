@@ -50,7 +50,7 @@ git clone <https://github.com/RogerChern/mxnext>
 export SIMPLEDET_DIR=/path/to/simpledet
 export COCOAPI_DIR=/path/to/cocoapi
 
-git clone <https://github.com/apache/incubator-mxnet> mxnet
+git clone https://github.com/apache/incubator-mxnet mxnet
 cd mxnet
 git checkout 1.3.1
 git submodule init
